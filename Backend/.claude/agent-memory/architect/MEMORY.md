@@ -1,0 +1,2 @@
+- [PlatziFlix Architecture State](project_architecture_analysis.md) — Baseline assessment with critical gaps: duplicate models, contract misalignment, missing endpoints
+- [User Fabio](user_fabio.md) — Developer/tech lead on PlatziFlix, Spanish-speaking, expects detailed technical analysis
