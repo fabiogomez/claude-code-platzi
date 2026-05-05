@@ -1,4 +1,3 @@
-import { Class } from "@/types";
 import { VideoPlayer } from "@/components/VideoPlayer/VideoPlayer";
 import Link from "next/link";
 import styles from "./page.module.scss";
@@ -7,7 +6,16 @@ interface ClassPageProps {
   params: { class_id: string };
 }
 
-async function getClassData(class_id: string): Promise<Class> {
+interface ClassDetail {
+  id: number;
+  title: string;
+  description: string;
+  video: string;
+  duration: number;
+  slug: string;
+}
+
+async function getClassData(class_id: string): Promise<ClassDetail> {
   const res = await fetch(`http://localhost:8000/classes/${class_id}`, { cache: "no-store" });
   if (!res.ok) throw new Error("No se pudo cargar la clase");
   return res.json();

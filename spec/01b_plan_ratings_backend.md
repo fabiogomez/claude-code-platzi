@@ -56,11 +56,13 @@ The architect warns that `/courses/{slug}/ratings/stats` must be declared AFTER 
 
 ---
 
-## Phase 1: Data Model and Migration
+## Phase 1: Data Model and Migration [COMPLETED]
 
 **Objective:** Create the `ratings` table in the database with the corresponding SQLAlchemy model, including constraints, indexes, and sample data.
 
 **Dependencies:** None. This phase is the foundation for everything else.
+
+**Status:** Completed on 2026-04-14. All verification criteria passed: table exists with correct columns/constraints/indexes, seed-fresh creates 5 ratings, score range and uniqueness constraints enforced, 10/10 existing tests still passing.
 
 ### Task 1.1: Create the `Rating` model file
 
@@ -151,9 +153,11 @@ make create-migration
 
 ---
 
-## Phase 2: Pydantic Schemas and Rating Service
+## Phase 2: Pydantic Schemas and Rating Service [COMPLETED]
 
 **Objective:** Create input validation with Pydantic schemas and all the business logic for ratings CRUD, including the modification of `CourseService` to enrich responses with stats.
+
+**Status:** Completed on 2026-04-14. Schemas created (RatingCreate, RatingResponse, RatingStats), RatingService implemented with all CRUD methods, CourseService enriched with rating stats in both endpoints.
 
 **Dependencies:** Phase 1 completed (the `Rating` model exists, migration applied, seed functional).
 
@@ -248,9 +252,11 @@ make create-migration
 
 ---
 
-## Phase 3: API Endpoints
+## Phase 3: API Endpoints [COMPLETED]
 
 **Objective:** Expose the 4 new ratings endpoints in `main.py` using the existing dependency injection pattern.
+
+**Status:** Completed on 2026-04-14. Four endpoints added (POST, GET list, GET stats, DELETE). API contracts updated with Rating entity and all new endpoints.
 
 **Dependencies:** Phase 2 completed.
 
@@ -324,9 +330,11 @@ make create-migration
 
 ---
 
-## Phase 4: Backend Tests
+## Phase 4: Backend Tests [COMPLETED]
 
 **Objective:** Update existing tests to reflect the new contract and add 12+ new tests for the ratings endpoints.
+
+**Status:** Completed on 2026-04-14. 23 total tests (10 original updated + 13 new), all passing. Mock data updated, contract tests updated, 11 rating endpoint tests + 2 courses-with-ratings tests added.
 
 **Dependencies:** Phase 3 completed. The existing contract tests will be failing at this point because the responses now include `average_rating` and `ratings_count`.
 
@@ -404,11 +412,13 @@ Tests to implement (all follow the AAA pattern: Arrange mock, Act request, Asser
 
 ---
 
-## Phase 5: Refined Seed Data and Final Documentation
+## Phase 5: Refined Seed Data and Final Documentation [COMPLETED]
 
 **Objective:** End-to-end verification of the complete system and final cleanup.
 
 **Dependencies:** Phase 4 completed.
+
+**Status:** Completed on 2026-04-14. E2E verification passed: seed-fresh works, all endpoints return correct data, soft-delete excludes from stats/list, 23/23 tests passing.
 
 ### Task 5.1: End-to-end verification
 

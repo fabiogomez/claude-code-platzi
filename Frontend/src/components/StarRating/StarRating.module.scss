@@ -1,0 +1,50 @@
+@import '../../styles/vars.scss';
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stars {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+}
+
+.starFull {
+  color: #fbbf24;
+}
+
+.starHalf {
+  color: #fbbf24;
+  opacity: 0.6;
+}
+
+.starEmpty {
+  color: color('light-gray');
+}
+
+.info {
+  color: color('text-secondary');
+  font-weight: 600;
+}
+
+// Size variants
+.sm {
+  .stars {
+    font-size: 1rem;
+  }
+  .info {
+    font-size: 0.85rem;
+  }
+}
+
+.md {
+  .stars {
+    font-size: 1.4rem;
+  }
+  .info {
+    font-size: 1rem;
+  }
+}

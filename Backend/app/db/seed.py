@@ -6,7 +6,7 @@ This script creates sample data for testing and development.
 from datetime import datetime
 from sqlalchemy.orm import Session
 from app.db.base import SessionLocal
-from app.models import Teacher, Course, Lesson, course_teachers
+from app.models import Teacher, Course, Lesson, Rating, course_teachers
 from app.core.config import settings
 
 
@@ -144,10 +144,33 @@ def create_sample_data():
 
         db.commit()
 
+        # Create sample ratings
+        ratings_data = [
+            {"course": course1, "user_identifier": "a1b2c3d4-e5f6-7890-abcd-ef1234567890", "score": 5, "comment": "Excellent course, very well explained!"},
+            {"course": course1, "user_identifier": "b2c3d4e5-f6a7-8901-bcde-f12345678901", "score": 4, "comment": None},
+            {"course": course2, "user_identifier": "c3d4e5f6-a7b8-9012-cdef-123456789012", "score": 5, "comment": "Best Python course I've taken."},
+            {"course": course2, "user_identifier": "a1b2c3d4-e5f6-7890-abcd-ef1234567890", "score": 3, "comment": None},
+            {"course": course3, "user_identifier": "d4e5f6a7-b8c9-0123-defa-234567890123", "score": 4, "comment": "Great content on modern JS."},
+        ]
+
+        for rating_data in ratings_data:
+            rating = Rating(
+                course_id=rating_data["course"].id,
+                user_identifier=rating_data["user_identifier"],
+                score=rating_data["score"],
+                comment=rating_data["comment"],
+                created_at=datetime.utcnow(),
+                updated_at=datetime.utcnow(),
+            )
+            db.add(rating)
+
+        db.commit()
+
         print("✅ Sample data created successfully!")
         print(f"   - Created {len([teacher1, teacher2, teacher3])} teachers")
         print(f"   - Created {len([course1, course2, course3])} courses")
         print(f"   - Created {len(lessons_data)} lessons")
+        print(f"   - Created {len(ratings_data)} ratings")
 
     except Exception as e:
         db.rollback()
@@ -163,6 +186,7 @@ def clear_all_data():
 
     try:
         # Delete in reverse order to avoid foreign key constraints
+        db.query(Rating).delete()
         db.query(Lesson).delete()
         db.execute(course_teachers.delete())
         db.query(Course).delete()

@@ -1,0 +1,107 @@
+@import '../../styles/vars.scss';
+
+.container {
+  background: color('off-white');
+  border-radius: 18px;
+  border: 2px solid color('light-gray');
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: color('text-primary');
+  margin: 0;
+}
+
+.starsContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.starButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 2rem;
+  color: color('light-gray');
+  transition: color 0.15s, transform 0.15s;
+  padding: 0.25rem;
+  line-height: 1;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.starActive {
+  color: #fbbf24;
+}
+
+.scoreIndicator {
+  color: color('text-secondary');
+  font-size: 1rem;
+  font-weight: 600;
+  margin-left: 0.5rem;
+}
+
+.commentInput {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid color('light-gray');
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+  transition: border-color 0.2s;
+
+  &:focus {
+    outline: none;
+    border-color: color('primary');
+  }
+}
+
+.submitButton {
+  align-self: flex-start;
+  background: color('primary');
+  color: color('white');
+  border: none;
+  border-radius: 12px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 45, 45, 0.3);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.successMessage {
+  color: #16a34a;
+  background: #f0fdf4;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.errorMessage {
+  color: color('primary');
+  background: rgba(255, 45, 45, 0.05);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}

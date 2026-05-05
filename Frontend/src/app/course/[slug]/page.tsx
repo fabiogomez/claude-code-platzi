@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: CoursePageProps) {
   const courseData = await getCourseData(params.slug);
 
   return {
-    title: `${courseData.title} - Curso Online`,
+    title: `${courseData.name} - Curso Online`,
     description: courseData.description,
   };
 }

@@ -1,27 +1,48 @@
-// Course types
+// Course types — matches GET /courses response
 export interface Course {
   id: number;
-  title: string;
-  teacher: string;
-  duration: number;
+  name: string;
+  description: string;
   thumbnail: string;
   slug: string;
+  average_rating?: number;
+  ratings_count?: number;
 }
 
-// Class types
+// Class summary returned inside GET /courses/:slug
 export interface Class {
   id: number;
-  title: string;
+  name: string;
   description: string;
-  video: string;
-  duration: number;
   slug: string;
 }
 
-// Course Detail type
+// Course Detail — matches GET /courses/:slug
 export interface CourseDetail extends Course {
-  description: string;
+  teacher_id: number[];
   classes: Class[];
+}
+
+// Rating types
+export interface Rating {
+  id: number;
+  course_id: number;
+  user_identifier: string;
+  score: number;
+  comment: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface RatingCreate {
+  score: number;
+  user_identifier: string;
+  comment?: string;
+}
+
+export interface RatingStats {
+  average_rating: number;
+  ratings_count: number;
 }
 
 // Progress types

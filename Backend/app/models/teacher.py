@@ -20,5 +20,4 @@ class Teacher(BaseModel):
     )
     
     def __repr__(self):
-        return f"<Teacher(id={s
-        elf.id}, name='{self.name}', email='{self.email}')>" 
+        return f"<Teacher(id={self.id}, name='{self.name}', email='{self.email}')>" 

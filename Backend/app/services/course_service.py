@@ -1,7 +1,9 @@
 from typing import List, Optional, Dict, Any
+from sqlalchemy import func
 from sqlalchemy.orm import Session, joinedload
 from app.models.course import Course
 from app.models.lesson import Lesson
+from app.models.rating import Rating
 from app.models.teacher import Teacher
 
 
@@ -13,6 +15,21 @@ class CourseService:
 
     def __init__(self, db: Session):
         self.db = db
+
+    def _get_rating_stats(self, course_id: int) -> Dict[str, Any]:
+        """Get average rating and count for a course."""
+        result = (
+            self.db.query(
+                func.coalesce(func.avg(Rating.score), 0),
+                func.count(Rating.id),
+            )
+            .filter(Rating.course_id == course_id, Rating.deleted_at.is_(None))
+            .first()
+        )
+        return {
+            "average_rating": round(float(result[0]), 1),
+            "ratings_count": result[1],
+        }
 
     def get_all_courses(self) -> List[Dict[str, Any]]:
         """
@@ -29,7 +46,8 @@ class CourseService:
                 "name": course.name,
                 "description": course.description,
                 "thumbnail": course.thumbnail,
-                "slug": course.slug
+                "slug": course.slug,
+                **self._get_rating_stats(course.id),
             }
             for course in courses
         ]
@@ -74,5 +92,6 @@ class CourseService:
                 }
                 for lesson in course.lessons
                 if lesson.deleted_at is None
-            ]
+            ],
+            **self._get_rating_stats(course.id),
         } 

@@ -28,6 +28,7 @@ plataforma online de cursos, cada cursos tiene clases, descripciones y no hay mu
 1. Curso
 2. Clases
 3. Profesor
+4. Rating
 
 ### Contratos
 
@@ -74,6 +75,19 @@ plataforma online de cursos, cada cursos tiene clases, descripciones y no hay mu
 }
 ```
 
+- Rating
+```json
+{
+    "id": 1,
+    "course_id": 1,
+    "user_identifier": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "score": 5,
+    "comment": "Excellent course!",
+    "created_at": "2021-01-01T00:00:00",
+    "updated_at": "2021-01-01T00:00:00"
+}
+```
+
 ### Endpoints
 
 - GET /courses -> Listar todos los cursos
@@ -85,6 +99,8 @@ plataforma online de cursos, cada cursos tiene clases, descripciones y no hay mu
         "description": "Curso de React",
         "thumbnail": "https://via.placeholder.com/150", 
         "slug": "curso-de-react",
+        "average_rating": 4.5,
+        "ratings_count": 2
     }
 ]
 ```
@@ -105,7 +121,9 @@ plataforma online de cursos, cada cursos tiene clases, descripciones y no hay mu
             "description": "Clase 1",
             "slug": "clase-1",
         }
-    ]
+    ],
+    "average_rating": 4.5,
+    "ratings_count": 2
 }
 ```
 - GET /courses/:slug/classes/:id -> Obtener una clase
@@ -119,5 +137,56 @@ plataforma online de cursos, cada cursos tiene clases, descripciones y no hay mu
     "created_at": "2021-01-01",
     "updated_at": "2021-01-01",
     "deleted_at": "2021-01-01"
+}
+```
+
+- POST /courses/:slug/ratings -> Create or update a rating
+```json
+// Request body
+{
+    "score": 5,
+    "user_identifier": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "comment": "Excellent course!"
+}
+
+// Response (201)
+{
+    "id": 1,
+    "course_id": 1,
+    "user_identifier": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "score": 5,
+    "comment": "Excellent course!",
+    "created_at": "2021-01-01T00:00:00",
+    "updated_at": "2021-01-01T00:00:00"
+}
+```
+
+- GET /courses/:slug/ratings -> List ratings for a course
+```json
+[
+    {
+        "id": 1,
+        "course_id": 1,
+        "user_identifier": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+        "score": 5,
+        "comment": "Excellent course!",
+        "created_at": "2021-01-01T00:00:00",
+        "updated_at": "2021-01-01T00:00:00"
+    }
+]
+```
+
+- GET /courses/:slug/ratings/stats -> Get rating statistics for a course
+```json
+{
+    "average_rating": 4.5,
+    "ratings_count": 2
+}
+```
+
+- DELETE /ratings/:rating_id?user_identifier=<uuid> -> Soft-delete a rating
+```json
+{
+    "message": "Rating deleted successfully"
 }
 ```

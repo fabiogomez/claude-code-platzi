@@ -89,7 +89,9 @@ These conventions must be strictly followed during implementation:
 
 ## Implementation Phases
 
-### Phase F1: Types and Utilities (no backend dependency)
+### Phase F1: Types and Utilities (no backend dependency) [COMPLETED]
+
+**Status:** COMPLETED - Types added to index.ts, userId utility created.
 
 **Objective:** Establish the TypeScript type foundation and the anonymous user identification utility.
 
@@ -138,7 +140,9 @@ These conventions must be strictly followed during implementation:
 
 ---
 
-### Phase F2: New Components (no backend dependency)
+### Phase F2: New Components (no backend dependency) [COMPLETED]
+
+**Status:** COMPLETED - StarRating (Server Component) and RatingForm (Client Component) created with SCSS modules.
 
 **Objective:** Create the StarRating and RatingForm components with their styles, ready for integration.
 
@@ -227,7 +231,9 @@ These conventions must be strictly followed during implementation:
 
 ---
 
-### Phase F3: Integration into Existing Components
+### Phase F3: Integration into Existing Components [COMPLETED]
+
+**Status:** COMPLETED - StarRating integrated into Course and CourseDetail components, RatingForm added to CourseDetail, rating props passed from page.tsx.
 
 **Objective:** Connect the new rating components into existing views (home and course detail).
 
@@ -291,7 +297,9 @@ These conventions must be strictly followed during implementation:
 
 ---
 
-### Phase F4: Test Updates
+### Phase F4: Test Updates [COMPLETED]
+
+**Status:** COMPLETED - All 25 new/updated tests pass. Course test updated with rating fields, new tests created for StarRating (7), RatingForm (7), and userId (4).
 
 **Objective:** Update existing tests that break due to the new fields and create tests for the new components.
 

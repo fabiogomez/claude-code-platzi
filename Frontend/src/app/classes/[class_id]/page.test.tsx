@@ -1,7 +1,6 @@
 import { renderToString } from "react-dom/server";
 import { startTransition } from "react";
 import ClassPage from "./page";
-import { Class } from "@/types";
 import { describe, it, expect, vi } from "vitest";
 
 vi.mock("@/components/VideoPlayer/VideoPlayer", () => ({
@@ -23,7 +22,7 @@ global.fetch = vi.fn().mockResolvedValue({
       video: "https://test.com/video.mp4",
       duration: 1200,
       slug: "clase-test",
-    } as Class),
+    }),
 });
 
 describe("ClassPage", () => {

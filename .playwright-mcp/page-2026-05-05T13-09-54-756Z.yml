@@ -1,0 +1,58 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]: PLATZI
+      - generic [ref=e5]: FLIX
+      - generic [ref=e6]: CURSOS
+    - generic [ref=e7]: PLATZI
+    - generic [ref=e8]: FLIX
+    - main [ref=e9]:
+      - generic [ref=e10]:
+        - link [ref=e11] [cursor=pointer]:
+          - /url: /course/curso-de-react
+          - article [ref=e12]:
+            - img "Curso de React" [ref=e14]
+            - generic [ref=e15]:
+              - heading "Curso de React" [level=2] [ref=e16]
+              - paragraph [ref=e17]: Aprende React desde cero hasta convertirte en un desarrollador profesional
+              - generic [ref=e18]:
+                - 'generic "Rating: 4.5 out of 5" [ref=e19]':
+                  - generic [ref=e20]: ★
+                  - generic [ref=e21]: ★
+                  - generic [ref=e22]: ★
+                  - generic [ref=e23]: ★
+                  - generic [ref=e24]: ★
+                - generic [ref=e25]: 4.5 (2)
+        - link [ref=e26] [cursor=pointer]:
+          - /url: /course/curso-de-python
+          - article [ref=e27]:
+            - img "Curso de Python" [ref=e29]
+            - generic [ref=e30]:
+              - heading "Curso de Python" [level=2] [ref=e31]
+              - paragraph [ref=e32]: Domina Python y sus frameworks más populares
+              - generic [ref=e33]:
+                - 'generic "Rating: 4.0 out of 5" [ref=e34]':
+                  - generic [ref=e35]: ★
+                  - generic [ref=e36]: ★
+                  - generic [ref=e37]: ★
+                  - generic [ref=e38]: ★
+                  - generic [ref=e39]: ☆
+                - generic [ref=e40]: 4.0 (2)
+        - link [ref=e41] [cursor=pointer]:
+          - /url: /course/curso-de-javascript
+          - article [ref=e42]:
+            - img "Curso de JavaScript" [ref=e44]
+            - generic [ref=e45]:
+              - heading "Curso de JavaScript" [level=2] [ref=e46]
+              - paragraph [ref=e47]: JavaScript moderno y sus mejores prácticas
+              - generic [ref=e48]:
+                - 'generic "Rating: 4.0 out of 5" [ref=e49]':
+                  - generic [ref=e50]: ★
+                  - generic [ref=e51]: ★
+                  - generic [ref=e52]: ★
+                  - generic [ref=e53]: ★
+                  - generic [ref=e54]: ☆
+                - generic [ref=e55]: 4.0 (1)
+  - alert [ref=e56]
+  - button "Open Next.js Dev Tools" [ref=e62] [cursor=pointer]:
+    - img [ref=e63]
